@@ -3,7 +3,7 @@ package app.domain;
 import java.util.Objects;
 
 public class Product {
-    public int id;
+    private int id;
     private String title;
     private double price;
     private boolean active;
