@@ -67,4 +67,7 @@ public class Product {
         return String.format("Продукт: id - %d, наиминование - %s, цена - %.2f?, активен - %b.",
                 id, title, price, active);
     }
+
+    public static boolean isActive(Customer customer) {
+    }
 }
