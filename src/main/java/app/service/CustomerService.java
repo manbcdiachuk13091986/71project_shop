@@ -115,4 +115,12 @@ public class CustomerService {
     public void clearCustomerCart(int id) throws IOException, CustomerNotFoundException {
         getActiveCustomerById(id).getProducts().clear();
     }
+
+    public double getCustomerCartAveragePrice(int id) throws IOException, CustomerNotFoundException {
+        double customer = getCustomerCartAveragePrice(id);
+    }
+
+    public double getCustomerCartTotalPrice(int id) {
+        return 0;
+    }
 }
