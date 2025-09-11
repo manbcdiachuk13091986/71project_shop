@@ -11,6 +11,16 @@ public class Product {
     public Product() {
     }
 
+    public Product(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    public Product(int id, double price) {
+        this.id = id;
+        this.price = price;
+    }
+
     public Product(int id, String title, double price, boolean active) {
         this.id = id;
         this.title = title;
@@ -64,10 +74,11 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.format("Продукт: id - %d, наиминование - %s, цена - %.2f?, активен - %b.",
+        return String.format("Продукт: id - %d, наименование - %s, цена - %.2f?, активен - %b.",
                 id, title, price, active);
     }
 
     public static boolean isActive(Customer customer) {
     }
 }
+
