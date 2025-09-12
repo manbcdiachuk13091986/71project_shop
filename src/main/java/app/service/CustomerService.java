@@ -14,6 +14,7 @@ import java.util.List;
 public class CustomerService {
     private final CustomerRepository repository;
     private final ProductService productService;
+    private int id;
 
     public CustomerService() throws IOException {
         repository = new CustomerRepository();
@@ -76,6 +77,7 @@ public class CustomerService {
         Customer customer = repository.findById(id);
         if (customer != null) {
             customer.setActive(true);
+            repository.update(customer);
         } else {
             throw new CustomerNotFoundException(id);
         }
@@ -93,6 +95,7 @@ public class CustomerService {
                 .mapToDouble(Product::getPrice)
                 .sum();
     }
+
     public double getCustomerCardAveragePrice(int id) throws IOException, CustomerNotFoundException {
         return getActiveCustomerById(id)
                 .getProducts()
@@ -102,25 +105,30 @@ public class CustomerService {
                 .average()
                 .orElse(0.0);
     }
+
     public void addProductToCustomerCart(int customerId, int productId) throws IOException, CustomerNotFoundException, ProductNotFoundException {
         Customer customer = getActiveCustomerById(customerId);
         Product product = productService.getActiveProductById(productId);
         customer.getProducts().add(product);
     }
+
     public void removeProductFromCustomerCart(int customerId, int productId) throws IOException, CustomerNotFoundException, ProductNotFoundException {
         Customer customer = getActiveCustomerById(customerId);
         Product product = productService.getActiveProductById(productId);
         customer.getProducts().remove(product);
     }
+
     public void clearCustomerCart(int id) throws IOException, CustomerNotFoundException {
         getActiveCustomerById(id).getProducts().clear();
     }
 
-    public double getCustomerCartAveragePrice(int id) throws IOException, CustomerNotFoundException {
-        double customer = getCustomerCartAveragePrice(id);
+    public double getCustomerCartTotalPrice(int id) {
+
+        return 0;
     }
 
-    public double getCustomerCartTotalPrice(int id) {
+    public double getCustomerCartAveragePrice(int id) {
+        this.id = id;
         return 0;
     }
 }

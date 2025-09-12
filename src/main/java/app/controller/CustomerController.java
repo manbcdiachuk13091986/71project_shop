@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class CustomerController {
-    private final CustomerService service;
+    private  CustomerService service;
 
     public Customer save(String name) throws IOException, CustomerSaveException {
         Customer customer = new Customer(name);

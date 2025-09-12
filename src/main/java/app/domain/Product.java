@@ -79,6 +79,7 @@ public class Product {
     }
 
     public static boolean isActive(Customer customer) {
+        return false;
     }
 }
 

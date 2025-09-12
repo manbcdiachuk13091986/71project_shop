@@ -16,7 +16,7 @@ public class ProductService {
         repository = new ProductRepository();
     }
 
-    public Product save(Product product) throws ProductSaveException {
+    public Product save(Product product) throws ProductSaveException, IOException {
         if (product == null) {
             throw new ProductSaveException("Продукт не может быть null");
         }
@@ -46,7 +46,7 @@ public class ProductService {
         }
         return product;
     }
-    public void update(Product product) throws ProductUpdateException {
+    public void update(Product product) throws ProductUpdateException, IOException {
         if (product == null){
             throw new ProductUpdateException("Продукт не может быть null");
         }
@@ -76,7 +76,7 @@ public class ProductService {
     public int getActiveProductsCount() throws IOException {
         return getAllActiveProducts().size();
     }
-    public double getActiveProductTotalCost(){
+    public double getActiveProductTotalCost() throws IOException {
         return getAllActiveProducts()
                 .stream()
                 .mapToDouble(Product::getPrice)

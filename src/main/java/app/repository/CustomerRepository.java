@@ -65,6 +65,8 @@ public class CustomerRepository {
                     .stream()
                     .filter(x -> x.getId() == id)
                     .forEach(x -> x.setName(newName));
+
+
             mapper.writeValue(database, customers);
         }
         public void deleteById ( int id) throws IOException {
